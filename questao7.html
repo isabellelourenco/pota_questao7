@@ -1,0 +1,66 @@
+<html>
+
+    <head>
+        <title>--Formulário--</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <form name="meu_form">
+
+            <h1>Formulário Questão 7</h1>
+
+            <input type="radio" name="option" value="lista"/><label>Lista</label>
+
+            <input type="radio" name="option" value="pilha"/><label>Pilha</label>
+            <br> <br>
+            <label id="texto" for="nome">Texto</label>
+            <br> 
+            <input type="text" id="nomeid" placeholder="Insira um texto" required="required" name="text" />
+            <br> <br>
+
+            <input id="btnSubmit" type="button" class="enviar" value="Inserir" />
+            <input id="btnClear" type="button" class="enviar" onclick="limpar();" value="Limpar" />
+            <br> <br>
+
+            <label id="texto" for="nome">Lista:</label>
+            <br>
+            <div id="1" ></div>
+            <br>
+            <label id="texto" for="nome">Pilha:</label>
+            <br>
+            <div id="2" ></div>
+            <br>
+
+        </form>
+        <script>
+            var lista = [];
+            var pilha = [];
+
+            document.getElementById("btnSubmit").onclick = function() {
+                var texto = document.getElementById("nomeid").value;
+                var radios = document.getElementsByName("option");
+                
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked && radios[i].value == "lista"){
+                        lista.push(texto);
+                        console.log(radios[i])
+                        document.getElementById("1").innerHTML = lista;
+                    }else if(radios[i].checked && radios[i].value == "pilha"){
+                        pilha.unshift(texto);
+                        document.getElementById("2").innerHTML = pilha;
+                    }
+                }
+            };
+
+            document.getElementById("btnClear").onclick = function(){
+                console.log("Limpou as listas");
+                lista = [];
+                pilha = [];
+
+
+            }
+        </script>
+    </body>
+</html>
+
